@@ -5,5 +5,5 @@
  */
 
 $config['dsn']      = 'mysql:host=localhost;dbname=resto;charset=UTF8';
-$config['password'] = 'toot';
+$config['password'] = '';
 $config['user']     = 'root';
