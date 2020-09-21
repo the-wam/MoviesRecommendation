@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Movies Recommandation</title>
+
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/normalize-3.0.3.min.css">
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/font-awesome-4.3.0.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps|Karla">
+
+    <!-- Feuilles de styles de l'application -->
+    
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/ui-button.css">
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/ui-form.css">
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/ui-table.css">
+    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/mymovie.css">
+
+    <!-- Librairie jQuery -->
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+    <!-- Librairie Boostraps -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous"> -->
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> -->
+
+    <!-- JavaScript de l'application -->
+    <script src="<?= $wwwUrl ?>/js/utilities.js"></script>
+    <script src="<?= $wwwUrl ?>/js/classes/FormValidator.class.js"></script>
+</head>
+<body>
+
+    <!-- En-tête commune -->
+    <header>
+        <a href="https://3wa.fr/">
+            <img src="<?= $wwwUrl ?>/images/logo_3WA.gif" height="63" width="57" alt="logo 3WA">
+        </a>
+        <h1>
+
+            <a href="<?= $requestUrl ?>">
+                Moteur de Recommandation de film
+            </a>            
+        </h1>
+        <a href="https://simplon.co/">
+            <img src="<?= $wwwUrl ?>/images/simplon-logo.png" height="63" width="63" alt="logo simplon">
+        </a>
+    </header>
+
+    <!-- Interface utilisateur -->
+    <nav id="user" class="user-interface">
+        <ul class="link-list">
+            <?php if($userSession->getLevel() == true): ?>
+                <li>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/admin">Admin</a>
+                </li>
+                <li class="layout-right">
+                    <p class="welcome">Bonjour <strong><?= $userSession->getLogin() ?></strong> !</p>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user/logout">Déconnexion</a>
+                </li>
+            <?php elseif($userSession->isAuthenticated() == true): ?>
+                <li class="layout-right">
+                    <p class="welcome">Bonjour <strong><?= $userSession->getLogin() ?></strong> !</p>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user/logout">Déconnexion</a>
+                </li>
+        <?php else: ?>
+                <li>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user">Créer un compte</a>
+                </li>
+                <li class="layout-right">
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user/login">Connexion</a>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </nav>
+    <nav class="bdd">
+        <a class="button button-secondary" href="<?= $requestUrl ?>/genres">Genres</a>
+        <a class="button button-secondary" href="<?= $requestUrl ?>/actors">Actrices/Acteurs</a>
+        <a class="button button-secondary" href="<?= $requestUrl ?>/directors">Réalisatrice/Réalisateur</a>
+    </nav>
+
+    <main>
+    <section class= "homePage" >
+    <aside class="neoj4" >
+    <?php foreach($movies as $movie): ?>
+        <article class="roller-item" >
+            <a href="<?= $requestUrl ?>/movie?id_m=<?= $movie['id_m'] ?>">
+                <img class="asider" src="<?= $movie['poster_m']; ?>" alt="<?= $movie['title_m']; ?>">
+                <strong><?= $movie['title_m']; ?></strong>
+            </a>
+        </article>
+        <?php endforeach; ?>
+    </aside>
+        <!-- Affichage du template lié à la vue -->
+        <?php include $this->viewData['template'] ?>
+        <aside class="svd">
+    <?php foreach($movies as $movie): ?>
+        <article class="roller-item" >
+            <a href="<?= $requestUrl ?>/movie?id_m=<?= $movie['id_m'] ?>">
+                <img src="<?= $movie['poster_m']; ?>" alt="<?= $movie['title_m']; ?>">
+                <strong><?= $movie['title_m']; ?></strong>
+            </a>
+        </article>
+    <?php endforeach; ?>
+    </aside>
+</section>
+    </main>
+
+    <!-- Pied de page commun -->
+    <footer>
+        <p>C'est site a été réalisé dans le cadre de projets de formation</p>
+        <small>Réalisé avec <i class="fa fa-heart"></i>&nbsp; par les élèves de la 3W Academy</small>
+    </footer>
+
+    <!-- Code principal JavaScript de l'application -->
+    <script src="<?= $wwwUrl ?>/js/main.js"></script>
+</body>
+</html>

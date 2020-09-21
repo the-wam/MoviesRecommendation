@@ -1,0 +1,55 @@
+
+<section class= "homePage" >
+    <aside class="neoj4" >
+    <?php foreach($movies as $movie): ?>
+        <article class="roller-item" >
+            <a href="<?= $requestUrl ?>/movie?id_m=<?= $movie['id_m'] ?>">
+                <img class="asider" src="<?= $movie['poster_m']; ?>" alt="<?= $movie['title_m']; ?>">
+                <strong><?= $movie['title_m']; ?></strong>
+            </a>
+        </article>
+        <?php endforeach; ?>
+    </aside>
+    <div class="mainMovies">
+    <article>
+        <h2> <?= $movie['title_m'] ?> </h2>
+        <img class="poster" src="<?= $movie['poster_m']; ?>" alt="<?= $movie['title_m']; ?>">
+        <p><?= $movie['full_plot_m']; ?></p>
+        <p>De : 
+            <?php foreach($directors as $director) :?>
+                <a href="<?= $requestUrl ?>/directors/director?id_d=<?= $director['id_d'] ?>">
+                    <?= $director['firstname_d']; ?> <?= $director['lastname_d']; ?>
+                </a>
+            ,
+            <?php endforeach; ?>
+        </p>
+        <p>Avec : 
+            <?php foreach($actors as $actor) :?>
+                <a href="<?= $requestUrl ?>/actors/actor?id_a=<?= $actor['id_a'] ?>">
+                    <?= $actor['firstname_a']; ?> <?= $actor['lastname_a']; ?>
+                </a>
+                ,
+
+            <?php endforeach; ?>
+        </p>
+        <p>Genre(s) : 
+            <?php foreach($genres as $genre) :?>
+                <a href="<?= $requestUrl ?>/genres/genre?id_g=<?= $genre['id_g'] ?>">
+                    <?= $genre["name_g"]; ?>
+                </a>
+                , 
+            <?php endforeach; ?>
+        </p>
+    </article>
+    </div>
+    <aside class="svd">
+    <?php foreach($movies as $movie): ?>
+        <article class="roller-item" >
+            <a href="<?= $requestUrl ?>/movie?id_m=<?= $movie['id_m'] ?>">
+                <img src="<?= $movie['poster_m']; ?>" alt="<?= $movie['title_m']; ?>">
+                <strong><?= $movie['title_m']; ?></strong>
+            </a>
+        </article>
+    <?php endforeach; ?>
+    </aside>
+</section>

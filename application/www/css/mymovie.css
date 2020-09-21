@@ -1,0 +1,249 @@
+/*
+ * general styles of éléments HTML
+ */
+
+body
+{
+    background-color: #f0f0f0;
+}
+
+main
+{
+    width: auto;
+    
+}
+aside.hidden
+{
+    display: none;
+}
+
+header
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: #2c4365;
+    margin: 1em;
+    padding: 0.5em;
+}
+h1
+{
+    display: block;
+    width: 100%;
+}
+
+header > a
+{
+    margin-left: 1em;
+    order:1;
+}
+
+h1 a
+{
+    display: block;
+    text-align: center;
+    width: auto;
+}
+
+nav ul.link-list
+{
+    display:flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+nav.bdd
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1em;
+}
+
+section#filter
+{
+    display: none;
+}
+
+section img
+{
+    width: 8em;
+    height: 12em;
+}
+
+img.poster
+{
+    width: 14em;
+    height: 20em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+div.mainMovies 
+{
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+section.homePage
+{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: auto;
+    margin: 1em;
+    background-color: #a5b4d4;
+}
+h2
+{
+    width: 100%;
+    text-align: center;
+}
+
+div.mainMovies a
+{
+    color: #676583;
+}
+div.mainMovies
+{
+    order:1;
+}
+
+div.mainMovies, aside.svd
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+article.roller-item a
+{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+    max-width: 8em;
+    margin: 1em;
+}
+
+nav.bdd a
+{
+    margin: 0.5em;
+}
+
+section
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+aside a 
+{
+    color: #a5b4d4;
+}
+aside
+{
+    background-color: #676583;
+}
+
+aside.neoj4
+{
+    display: none;
+}
+
+article.roller-item a strong
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 8em;
+}
+
+footer
+{
+     display: flex;
+     text-align: center;
+     flex-direction: column;
+     align-items: center;
+     margin-bottom: 2em;
+}
+
+section.formu
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    flex:1;
+}
+
+section.formu li
+{
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+@media screen and (min-width: 980px) 
+{
+    header
+    {
+        flex-wrap: nowrap;
+    }
+    header + a
+    {
+        order:0;
+    }
+    h1
+    {
+        order:1;
+    }
+
+    section.homePage
+    {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    aside.svd
+    {
+        display: none;
+    }
+    aside.neoj4
+    {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+    section aside
+    {
+        order:2;        
+    }
+
+}
+
+
+@media screen and (min-width: 1680px) 
+{
+
+    aside.neoj4
+    {
+        display: flex;
+    }
+    aside.svd
+    {
+        display: flex;
+        order:0;
+        align-content: flex-start;
+    }
+
+   
+
+}
+
+

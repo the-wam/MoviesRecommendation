@@ -1,0 +1,15 @@
+<!-- Liste des actors -->
+
+
+<div class="mainMovies listOfThings">
+    <ul>
+    <?php foreach($listOfActors as $actor): ?>
+        <li>
+            <a href="<?= $requestUrl ?>/actors/actor?id_a=<?= $actor['id_a'] ?>">
+                <?= $actor["firstname_a"] ?> <?= $actor["lastname_a"] ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>
+

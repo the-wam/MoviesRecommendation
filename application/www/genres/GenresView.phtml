@@ -1,0 +1,15 @@
+<!-- Liste des Genres -->
+
+
+<div class="mainMovies listOfThings">
+    <ul>
+    <?php foreach($listOfGenres as $genre): ?>
+        <li>
+            <a href="<?= $requestUrl ?>/genres/genre?id_g=<?= $genre['id_g'] ?>">
+                <?= $genre["name_g"] ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+</div>
+

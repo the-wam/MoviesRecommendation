@@ -1,0 +1,39 @@
+
+<!-- Message de notification -->
+<?php if($flashBag->hasMessages() == true): ?>
+    <aside id="notice" class="notice">
+        <?php foreach($flashBag->fetchMessages() as $message): ?>
+            <p><?= $message ?></p>
+        <?php endforeach ?>
+    </aside>
+<?php endif; ?>
+
+<section id="filter" >
+<form>
+  <div>
+  <?php foreach($genres as $genre): ?>
+    <input type="checkbox" id="<?= $genre['id_'] ?>" name="<?= $genre['name_g'] ?>" value="<?= $genre['name_g'] ?>">
+    <label for="<?= $genre['name_g'] ?>"><?= $genre['name_g'] ?></label>
+    <?php endforeach; ?>
+  </div>
+  <div>
+    <button>filter</button>
+  </div>
+</form>
+
+</section>
+
+<!-- Liste des movies -->
+
+
+    <div class="mainMovies" >
+    <?php foreach($moviesMain as $movie): ?>
+        <article class="roller-item">
+            <a class="poster" href="<?= $requestUrl ?>/movie?id_m=<?= $movie['id_m'] ?>">
+                <img class="main" src="<?= $movie['poster_m']; ?>" alt="<?= $movie['title_m']; ?>">
+                <strong><?= $movie['title_m']; ?></strong>
+            </a>
+        </article>
+        <?php endforeach; ?>
+    </div>
+    

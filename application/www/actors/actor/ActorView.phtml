@@ -1,0 +1,15 @@
+<!-- Liste des movies -->
+
+
+<div class="mainMovies">
+    <h2><?= $listOfMovies[0]["firstname_a"] ?> <?= $listOfMovies[0]["lastname_a"] ?></h2>
+<?php foreach($listOfMovies as $movie): ?>
+    <article class="roller-item">
+        <a href="<?= $requestUrl ?>/movie?id_m=<?= $movie['id_m'] ?>">
+            <img src="<?= $movie['poster_m']; ?>" alt="<?= $movie['title_m']; ?>">
+            <strong><?= $movie['title_m']; ?></strong>
+        </a>
+    </article>
+    <?php endforeach; ?>
+</div>
+
