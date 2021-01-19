@@ -8,32 +8,25 @@
     </aside>
 <?php endif; ?>
 
-<section id="filter" >
-<form>
-  <div>
-  <?php foreach($genres as $genre): ?>
-    <input type="checkbox" id="<?= $genre['id_'] ?>" name="<?= $genre['name_g'] ?>" value="<?= $genre['name_g'] ?>">
-    <label for="<?= $genre['name_g'] ?>"><?= $genre['name_g'] ?></label>
-    <?php endforeach; ?>
-  </div>
-  <div>
-    <button>filter</button>
-  </div>
-</form>
 
-</section>
+
 
 <!-- Liste des movies -->
-
-
-    <div class="mainMovies" >
+    <div class="mainMovies" id= "mydiv">
     <?php foreach($moviesMain as $movie): ?>
-        <article class="roller-item">
+        <article class="roller-item" id="<?= $movie['id_m'] ?>">
             <a class="poster" href="<?= $requestUrl ?>/movie?id_m=<?= $movie['id_m'] ?>">
                 <img class="main" src="<?= $movie['poster_m']; ?>" alt="<?= $movie['title_m']; ?>">
                 <strong><?= $movie['title_m']; ?></strong>
             </a>
         </article>
         <?php endforeach; ?>
+        <!-- <ul id="pages">
+            <li class="page">précente</li>
+            <?php foreach($Npages as $Npage): ?>
+                <li class="page"><?= $Npage ?></li>
+            <?php endforeach; ?>
+            <li class="page">suivante</li>
+        </ul> -->
     </div>
     

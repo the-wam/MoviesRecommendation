@@ -11,7 +11,7 @@ class ActorsController
 
         return 
         [
-            "listOfActors" => $listOfActors, 
+            "listOfActors" => $listOfActors,
             "movies" => array()
         ];
  

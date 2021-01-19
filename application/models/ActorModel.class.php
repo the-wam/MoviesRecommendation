@@ -7,9 +7,10 @@ class ActorModel
         $sql = 'SELECT
                     id_a,
                     firstname_a,
-                    lastname_a
+                    lastname_a,
+                    fullname_a
                 FROM Actors
-                LIMIT 10';
+                LIMIT 20';
 
         $database = new Database();
 

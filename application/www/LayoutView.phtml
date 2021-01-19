@@ -20,6 +20,8 @@
     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
+    <!-- Ajax  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Librairie Boostraps -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
@@ -59,8 +61,10 @@
                 <li>
                     <a class="button button-primary" href="<?= $requestUrl ?>/admin">Admin</a>
                 </li>
-                <li class="layout-right">
+                <li>
                     <p class="welcome">Bonjour <strong><?= $userSession->getLogin() ?></strong> !</p>
+                </li>
+                <li class="layout-right">
                     <a class="button button-primary" href="<?= $requestUrl ?>/user/logout">Déconnexion</a>
                 </li>
             <?php elseif($userSession->isAuthenticated() == true): ?>
@@ -83,15 +87,17 @@
         <a class="button button-secondary" href="<?= $requestUrl ?>/actors">Actrices/Acteurs</a>
         <a class="button button-secondary" href="<?= $requestUrl ?>/directors">Réalisatrice/Réalisateur</a>
     </nav>
-
+    <section id="filter">
+        <input id="myInput" type="text" placeholder="Search..."> 
+    </section> 
     <main>
     <section class= "homePage" >
     <aside class="neoj4" >
-    <?php foreach($movies as $movie): ?>
+    <?php foreach($movies as $movie1): ?>
         <article class="roller-item" >
-            <a href="<?= $requestUrl ?>/movie?id_m=<?= $movie['id_m'] ?>">
-                <img class="asider" src="<?= $movie['poster_m']; ?>" alt="<?= $movie['title_m']; ?>">
-                <strong><?= $movie['title_m']; ?></strong>
+            <a href="<?= $requestUrl ?>/movie?id_m=<?= $movie1[0] ?>">
+                <img class="asider" src="<?= $movie1[2]; ?>" alt="<?= $movie1[1]; ?>">
+                <strong><?= $movie1[1]; ?></strong>
             </a>
         </article>
         <?php endforeach; ?>
@@ -99,16 +105,17 @@
         <!-- Affichage du template lié à la vue -->
         <?php include $this->viewData['template'] ?>
         <aside class="svd">
-    <?php foreach($movies as $movie): ?>
+    <?php foreach($movies as $movie2): ?>
         <article class="roller-item" >
-            <a href="<?= $requestUrl ?>/movie?id_m=<?= $movie['id_m'] ?>">
-                <img src="<?= $movie['poster_m']; ?>" alt="<?= $movie['title_m']; ?>">
-                <strong><?= $movie['title_m']; ?></strong>
+            <a href="<?= $requestUrl ?>/movie?id_m=<?= $movie2[0] ?>">
+                <img src="<?= $movie2[2]; ?>" alt="<?= $movie2[1]; ?>">
+                <strong><?= $movie2[1]; ?></strong>
             </a>
         </article>
     <?php endforeach; ?>
     </aside>
 </section>
+    <!-- <div id="scroll" style="color:red;">0</div> -->
     </main>
 
     <!-- Pied de page commun -->

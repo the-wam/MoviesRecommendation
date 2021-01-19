@@ -12,7 +12,7 @@ class MovieModel
                     poster_m
                 FROM Movies
                 WHERE poster_m IS NOT NULL
-                LIMIT 4';
+                LIMIT 30';
 
         $database = new Database();
 
@@ -20,17 +20,45 @@ class MovieModel
         return $database->query($sql);
     }
 
-    public function allMoviesMain()
+    public function recommendation($ids)
     {        
         $sql = 'SELECT
                     id_m,
                     title_m,
-                    runtime_m,
-                    full_plot_m,
                     poster_m
                 FROM Movies
                 WHERE poster_m IS NOT NULL
-                LIMIT 60';
+                AND id_m IN ('.implode(",",$ids).') LIMIT 4';
+        // val = $ids;
+
+        $database = new Database();
+
+        
+        return $database->query($sql);
+    }
+
+    public function getMoviespro($page, $pageSize)
+    {
+        $sql = "CALL spGetMovie(?, ?)";
+
+        $val = [$page, $pageSize];
+
+        $database = new Database();
+
+        return $database->query($sql, $val);
+    }
+
+    public function MoviesForHome()
+    {        
+        $sql = 'SELECT comments_rate.id_m, AVG(rate_c) note,title_m,poster_m
+                FROM comments_rate
+                INNER JOIN movies
+                ON comments_rate.id_m = movies.id_m
+                WHERE poster_m IS NOT NULL
+                GROUP by id_m
+                HAVING COUNT(rate_c)>10
+                ORDER BY note DESC
+                LIMIT 5';
 
         $database = new Database();
 

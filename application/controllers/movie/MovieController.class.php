@@ -7,12 +7,16 @@ class MovieController
 	{
         try {
             $id_m = $http->getParameter()['id_m'];
+            if ($id_m == Null)
+            {
+                // En cas d'erreur, redirection vers la page d'accueil.
+                $http->redirectTo('/');                
+            }
         } catch (\Throwable $th) {
             //throw $th;
             // En cas d'erreur, redirection vers la page d'accueil.
             $http->redirectTo('/');
         }
-        
 
         // Récupération des informations sur le film.
         $movieModel = new MovieModel();
@@ -30,18 +34,35 @@ class MovieController
         $directorModel = new DirectorModel();
         $directors = $directorModel->findDirectorsForMovie($id_m);
 
-        /*
-            * Sérialisation du movie (qui est un tableau PHP) en une
-            * chaîne de caractères JSON puis envoi de la réponse HTTP.
-            */
+        $userSession = new UserSession();
+        $movies = array();
+        // Requete pour les recommendations 
+        $userID = $userSession->getUserId();
+        $movieID = $id_m;
+
+        if ($userID == null)
+        {
+            $userID = 4;
+        }
+        $data = array(
+            'userId' => $userID,
+            'movieTitle' => $movie["title_m"]
+        );
+
+        // requete recommandation
+        $resquestiapython = new RequestIaPython();
+        $movies = $resquestiapython->myRequest($data);
+
+        // $toto = new MovieModel();
+        // $movies = $toto->recommendation($response);
 
         return 
         [
-            "movie" => $movie, 
+            "myMovie" => $movie,
             "actors" => $actors, 
             "genres" => $genres, 
             "directors" => $directors,
-            "movies" => array()
+            "movies" => $movies
         ];
 
         

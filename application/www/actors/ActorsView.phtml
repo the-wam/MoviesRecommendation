@@ -6,7 +6,7 @@
     <?php foreach($listOfActors as $actor): ?>
         <li>
             <a href="<?= $requestUrl ?>/actors/actor?id_a=<?= $actor['id_a'] ?>">
-                <?= $actor["firstname_a"] ?> <?= $actor["lastname_a"] ?>
+                <?= $actor["firstname_a"] ?> <?= $actor["lastname_a"] ?> <?= $actor["fullname_a"] ?> 
             </a>
         </li>
     <?php endforeach; ?>

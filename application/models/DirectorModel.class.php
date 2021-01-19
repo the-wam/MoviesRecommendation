@@ -7,9 +7,10 @@ class DirectorModel
         $sql = 'SELECT
                     id_d,
                     firstname_d,
-                    lastname_d
+                    lastname_d,
+                    fullname_d
                 FROM Directors
-                LIMIT 10';
+                LIMIT 20';
 
         $database = new Database();
 

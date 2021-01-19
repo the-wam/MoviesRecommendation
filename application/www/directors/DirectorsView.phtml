@@ -6,7 +6,7 @@
     <?php foreach($listOfDirectors as $director): ?>
         <li>
             <a href="<?= $requestUrl ?>/directors/director?id_d=<?= $director['id_d'] ?>">
-                <?= $director["firstname_d"] ?> <?= $director["lastname_d"] ?>
+                <?= $director["firstname_d"] ?> <?= $director["lastname_d"] ?> <?= $director["fullname_d"] ?>
             </a>
         </li>
     <?php endforeach; ?>

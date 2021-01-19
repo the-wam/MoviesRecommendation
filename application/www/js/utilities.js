@@ -53,18 +53,18 @@ function getWwwUrl()
 }
 
 // La fonction renvoie vrai si l'argument est un nombre entier
-function isInteger(value)
-{
-    if(isNumber(value) == true)
-    {
-        if(value % 1 == 0) // Le reste d'une division par 1 d'un nombre entier vaut 0
-        {
-            return true;
-        }
-    }
+// function isInteger(value)
+// {
+//     if(isNumber(value) == true)
+//     {
+//         if(value % 1 == 0) // Le reste d'une division par 1 d'un nombre entier vaut 0
+//         {
+//             return true;
+//         }
+//     }
 
-    return false;
-}
+//     return false;
+// }
 
 function loadDataFromDomStorage(name)
 {

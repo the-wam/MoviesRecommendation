@@ -6,6 +6,7 @@ class ActorController
 	public function httpGetMethod(Http $http)
 	{
         try {
+            // Récupération de id de l'actor
             $id_a = $http->getParameter()['id_a'];
 
             // Récupération des actors du film
@@ -26,7 +27,7 @@ class ActorController
                 $http->redirectTo('/');
             }
         } catch (\Throwable $th) {
-            //throw $th;
+            
             // En cas d'erreur, redirection vers la page d'accueil.
             $http->redirectTo('/');
         }        
